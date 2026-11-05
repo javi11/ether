@@ -23,8 +23,24 @@ func validateNodeSettings(server config.Server, database config.Database) error 
 // Deployment is mandatory for isolated roles; plain config edits never bypass
 // the historical fail-closed guard or create an unauthenticated private service.
 func (a *App) validateRuntimeSettings(server config.Server, database config.Database) error {
-	if a.deployment != nil && len(server.NodeRoles) == 1 && server.NodeRoles[0] == config.RoleTranscode {
+	if a.deployment != nil && labSingletonRole(server.NodeRoles) {
 		return server.ValidateNodeSettings(database)
 	}
 	return validateNodeSettings(server, database)
+}
+
+// LAB ONLY: exact singleton graphs are enabled solely on the separately staged
+// acceptance branch. Shipping integration retains its existing specialist guard.
+// Do not widen this to arbitrary subsets: background and combined graphs have
+// no complete construction/route acceptance contract.
+func labSingletonRole(roles config.NodeRoles) bool {
+	if len(roles) != 1 {
+		return false
+	}
+	switch roles[0] {
+	case config.RoleServer, config.RoleSource, config.RoleTranscode, config.RoleDelivery:
+		return true
+	default:
+		return false
+	}
 }
