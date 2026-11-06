@@ -684,6 +684,9 @@ failures that also reproduce on the release baseline.
   buffer hides the recovery interruption. An Emby transcode-loss run also
   stalled after segment retries were exhausted: no encoder replacement was
   committed, and boot-replacement retirement occurred during active playback.
+- An uninterrupted Plex reference run changed encoder generation without an
+  injected fault and failed copied-audio continuity. Its reference was rejected;
+  a clean uninterrupted run is required before further acceptance comparisons.
 - The complete role-loss matrix remains required for release. Local Plex and
   Jellyfin baselines, offline failover tests and negative controls are supporting
   evidence, not role-loss passes. The mixed-role chart lab gate remains enabled.
