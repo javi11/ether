@@ -8144,5 +8144,31 @@
   "m_1f5c76855b2fb6": "Inizio (UTC)",
   "m_1fc5ca5d242439": "Scelti per questo spettatore · Crime",
   "m_1fe7761ebf753b": "Francese",
-  "m_1ff74a0a385513": "Genere per bambini"
+  "m_1ff74a0a385513": "Genere per bambini",
+  "m_0065e717956476": "Rimuovi la regola {title}",
+  "m_009b07f9887d54": "Righe selezionate",
+  "m_01609b7d026e66": "Riporta le righe selezionate a Tutti",
+  "m_039a2921ce98a3": "Riporta le righe selezionate al predefinito",
+  "m_03b06978a0c496": "Imposta le righe selezionate su {status}",
+  "m_09bedf60e4e7b5": {
+    "one": "Si applica a {count} riga",
+    "many": "Si applica a {count} righe",
+    "other": "Si applica a {count} righe"
+  },
+  "m_0fd513828cede5": {
+    "one": "{count} riga",
+    "many": "{count} righe",
+    "other": "{count} righe"
+  },
+  "m_181492ead9b6c6": "Impostato dalla regola {pattern}. Modificarlo qui dà a questa riga un'impostazione propria.",
+  "m_1847745b140186": "Mostra le righe per stato",
+  "m_18c2043580fa97": {
+    "one": "{count} disattivata",
+    "many": "{count} disattivate",
+    "other": "{count} disattivate"
+  },
+  "m_18e96a529e967d": "Seleziona tutte le righe in {group}",
+  "m_1963891cbada94": "tramite {pattern}",
+  "m_1afc90744313a9": "{rows} · {off}",
+  "m_1f2d67f2aa05b6": "Sostituito"
 }
