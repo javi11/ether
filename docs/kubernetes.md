@@ -673,6 +673,10 @@ failures that also reproduce on the release baseline.
   guard abort or an unperformed fault is pending infrastructure evidence.
 - Normal Stop across replicas requires repeated-session capacity accounting and
   dead-boot claim retirement confirmation; a Stop HTTP 200 alone is insufficient.
+- A measured Jellyfin controller force-delete during steady playback failed:
+  the client stalled, retried segments, received Stop 503 and retained a claim.
+  Continuity checks passed for the collected media only. Controller-loss
+  acceptance remains blocked pending a fix and a complete measured rerun.
 - The complete role-loss matrix remains required for release. Local Plex and
   Jellyfin baselines, offline failover tests and negative controls are supporting
   evidence, not role-loss passes. The mixed-role chart lab gate remains enabled.
