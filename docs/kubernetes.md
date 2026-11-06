@@ -115,10 +115,15 @@ exceed the peer-to-peer budget. A zero bound therefore cannot admit work.
 
 Unknown, failed or stale samples (older than three heartbeat intervals) refuse
 new authority. Local wall elapsed is also compared with monotonic elapsed on
-heartbeats and authority checks: a step above the smaller of 10 ms and one tenth
-of the configured bound (minimum 1 ms) closes admission immediately and logs its
-signed size. A step during a query invalidates that query. Two consecutive good
-samples at or below 80% of the half-bound restore admission automatically.
+heartbeats and authority checks. Paired wall/monotonic observations are captured
+and committed under the same guard lock; delayed samples cannot rewind newer
+proof. Steps above the smaller of 10 ms and one tenth of the configured bound
+(minimum 1 ms) are logged with their signed size and carried into the estimated
+offset. A correction within the existing half-bound budget remains diagnostic;
+unknown or out-of-budget uncertainty closes authority immediately. A step during
+a DB query is also reported, while the after-wall estimate and measured RTT
+determine admission. Two consecutive good samples at or below 80% of the
+half-bound restore admission automatically.
 Keep host NTP/time synchronization running; this monitor neither sets clocks nor
 proves an external synchronization service's future drift guarantee. PostgreSQL
 must remain a common stable clock reference for the cluster.
@@ -135,12 +140,13 @@ Existing media remains subject to normal authority/expiry checks, and an outage
 longer than the previously granted lifetime can therefore interrupt playback.
 No retirement or resource reclamation follows from clock failure.
 
-A healthy controller probes encoder eligibility before attempting renewal. Once
-heartbeat diagnostics report a worker's clock quarantine, the failure grace
-triggers replacement on another eligible node without waiting for expiry. If
-that report is delayed, a refused renewal leaves the worker's last accepted
-monotonic deadline intact; its expiry timer self-fences the execution and a
-subsequent status probe triggers the same replacement. Supersession preserves
+A healthy controller probes the exact member/role and execution status before
+attempting renewal. New-placement eligibility is separate: draining or clock
+quarantine alone does not displace a healthy execution under its accepted lease.
+A refused renewal leaves the last accepted monotonic deadline intact; expiration
+self-fences the execution and a subsequent failed status probe can trigger
+replacement. Membership loss, membership timeout, status timeout, status failure
+and an observed retired encoder are distinguished in recovery diagnostics. Supersession preserves
 old displaced capacity claims until exact retirement proof, advances execution
 generation, and resumes at the delivery watermark. A clock-quarantined controller
 also stops coordinator lease issuance/renewal/adoption; a healthy replica can
