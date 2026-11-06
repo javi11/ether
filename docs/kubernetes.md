@@ -677,6 +677,10 @@ failures that also reproduce on the release baseline.
   the client stalled, retried segments, received Stop 503 and retained a claim.
   Continuity checks passed for the collected media only. Controller-loss
   acceptance remains blocked pending a fix and a complete measured rerun.
+- A measured Jellyfin transcode force-delete recovered without client stalls
+  or segment retries but lost one copied audio access unit and failed audio
+  continuity. Exact audio identity remains a release gate even when the forward
+  buffer hides the recovery interruption.
 - The complete role-loss matrix remains required for release. Local Plex and
   Jellyfin baselines, offline failover tests and negative controls are supporting
   evidence, not role-loss passes. The mixed-role chart lab gate remains enabled.
