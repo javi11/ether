@@ -682,8 +682,8 @@ failures that also reproduce on the release baseline.
 - Measured Jellyfin and Emby controller force-deletes during steady playback
   failed: clients stalled, retried segments, received Stop 503 and retained a
   claim.
-  Continuity checks passed for the collected media only. Later Jellyfin and Emby
-  controller reruns pass client, control, continuity and retirement checks for
+  Continuity checks passed for the collected media only. Later Plex, Jellyfin
+  and Emby controller runs pass client, control, continuity and retirement checks for
   the tested steady pod-loss profile, with coordination epoch advancing while
   the healthy encoder stays unchanged. Server production interruption is not
   applicable to that unchanged encoder. These results supersede the earlier
