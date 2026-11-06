@@ -661,8 +661,11 @@ failures that also reproduce on the release baseline.
   duplicated AAC frame. Uninterrupted and boundary 0–8 kill proofs, with no TTFF
   regression, are required before claiming seamless FastStart recovery.
 - Cluster Resume refuses video-copy. Ordinary copy seeks retain their behavior.
-- Hardware restart reorder depth is unmeasured. Keep current hardware encoder
-  arguments until NVENC and other supported devices have their own splice proof.
+- Native NVENC offline MPEG-TS restarts with an unspecified-level/rate plan
+  failed timing, decode and audio continuity at boundaries 1–4: replacement video
+  was 100 ms early with missing audio access units. This result applies to that
+  captured plan; negotiated plans that select no B frames and actual distributed
+  recovery remain unproven. Other hardware restart paths also need splice proof.
 - Native NVENC distributed playback, five minutes of clean media and native-node
   kill to CPU recovery require measured harness evidence. Hardware probing alone
   does not close this gate.
