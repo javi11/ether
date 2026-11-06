@@ -297,6 +297,12 @@ is not a report digest. Record source revisions and capture times so mutable
 reports cannot silently replace the evidence behind a decision. The live index
 and private media, credentials, logs and dumps must not be committed.
 
+A later Plex no-loss baseline passes all eight continuity checks against an
+independent reference, with no stalls or retries and clean Stop/retirement.
+This closes reference readiness for that tested profile. Earlier rejected
+references remain historical evidence; loss acceptance still requires its own
+completed case report on the reviewed candidate.
+
 ## Multihost lab scripts
 
 `packaging/kubernetes/multihost/` provides an isolated K3s lab across hosts over
