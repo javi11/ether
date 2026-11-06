@@ -685,9 +685,10 @@ failures that also reproduce on the release baseline.
   Continuity checks passed for the collected media only. Later Plex, Jellyfin
   and Emby controller runs pass client, control, continuity and retirement checks for
   the tested steady pod-loss profile, with coordination epoch advancing while
-  the healthy encoder stays unchanged. Server production interruption is not
-  applicable to that unchanged encoder. These results supersede the earlier
-  controller failures for this profile; physical-host and other loss profiles
+  the healthy encoder stays unchanged. Server interruption is reported
+  separately for each profile; the Plex run leaves its duration unmeasured.
+  These results supersede the earlier controller failures for this profile;
+  physical-host and other loss profiles
   remain separate gates, with historical failures retained.
 - A measured Jellyfin transcode force-delete recovered without client stalls
   or segment retries but lost one copied audio access unit and failed audio
