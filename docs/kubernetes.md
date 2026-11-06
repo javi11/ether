@@ -682,8 +682,10 @@ failures that also reproduce on the release baseline.
 - Measured Jellyfin and Emby controller force-deletes during steady playback
   failed: clients stalled, retried segments, received Stop 503 and retained a
   claim.
-  Continuity checks passed for the collected media only. Controller-loss
-  acceptance remains blocked pending a fix and a complete measured rerun.
+  Continuity checks passed for the collected media only. A later Jellyfin
+  controller rerun passes client, control, continuity and retirement checks;
+  server interruption timing remains unmeasured. Historical failures remain
+  recorded until the corresponding complete acceptance reruns pass.
 - A measured Jellyfin transcode force-delete recovered without client stalls
   or segment retries but lost one copied audio access unit and failed audio
   continuity. Exact audio identity remains a release gate even when the forward
