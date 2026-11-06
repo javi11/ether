@@ -303,6 +303,13 @@ This closes reference readiness for that tested profile. Earlier rejected
 references remain historical evidence; loss acceptance still requires its own
 completed case report on the reviewed candidate.
 
+A measured Plex source-pod loss also exercises source-owner replacement and
+advances the source generation while the encoder generation/node/boot remain
+unchanged. Collected media, controls and retirement pass for that steady
+single-host pod-fault profile. The earlier attempt that did not exercise source
+replacement remains labeled NOT_EXERCISED. Server interruption is unmeasured;
+physical-host and other source-loss profiles remain separate gates.
+
 ## Multihost lab scripts
 
 `packaging/kubernetes/multihost/` provides an isolated K3s lab across hosts over
