@@ -695,6 +695,9 @@ failures that also reproduce on the release baseline.
   buffer hides the recovery interruption. An Emby transcode-loss run also
   stalled after segment retries were exhausted: no encoder replacement was
   committed, and boot-replacement retirement occurred during active playback.
+- A steady source-pause run stalled despite passing continuity checks for the
+  collected media and clean Stop/retirement. The passing source force-delete
+  case does not certify pause recovery; a corrected pause rerun is required.
 - The complete role-loss matrix remains required for release. Local Plex and
   Jellyfin baselines, offline failover tests and negative controls are supporting
   evidence, not role-loss passes. The mixed-role chart lab gate remains enabled.
