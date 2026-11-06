@@ -683,9 +683,12 @@ failures that also reproduce on the release baseline.
   failed: clients stalled, retried segments, received Stop 503 and retained a
   claim.
   Continuity checks passed for the collected media only. Later Jellyfin and Emby
-  controller reruns pass client, control, continuity and retirement checks;
-  server interruption timing remains unmeasured. Historical failures remain
-  recorded until the corresponding complete acceptance reruns pass.
+  controller reruns pass client, control, continuity and retirement checks for
+  the tested steady pod-loss profile, with coordination epoch advancing while
+  the healthy encoder stays unchanged. Server production interruption is not
+  applicable to that unchanged encoder. These results supersede the earlier
+  controller failures for this profile; physical-host and other loss profiles
+  remain separate gates, with historical failures retained.
 - A measured Jellyfin transcode force-delete recovered without client stalls
   or segment retries but lost one copied audio access unit and failed audio
   continuity. Exact audio identity remains a release gate even when the forward
