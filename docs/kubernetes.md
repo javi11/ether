@@ -682,7 +682,8 @@ failures that also reproduce on the release baseline.
   or segment retries but lost one copied audio access unit and failed audio
   continuity. Exact audio identity remains a release gate even when the forward
   buffer hides the recovery interruption. An Emby transcode-loss run also
-  stalled after segment retries were exhausted.
+  stalled after segment retries were exhausted: no encoder replacement was
+  committed, and boot-replacement retirement occurred during active playback.
 - The complete role-loss matrix remains required for release. Local Plex and
   Jellyfin baselines, offline failover tests and negative controls are supporting
   evidence, not role-loss passes. The mixed-role chart lab gate remains enabled.
